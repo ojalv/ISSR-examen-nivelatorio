@@ -1,4 +1,4 @@
-/*1- Resolver el problema utilizando javascript, para identificar una figura geométrica:
+/*1- Resolver el problema utilizando javascript, para tipo una figura geométrica:
 
 Teniendo una variable numérica que representa el número de lados de una figura geométrica, 
 mostrar por consola su tipo. Los tipos son: "Círculo", "Triángulo", "Cuadrado", "Pentágono", "Hexágono" o "Polígono", según corresponda:
@@ -26,10 +26,17 @@ radio es el radio del círculo.
 
 IMPORTANTE: resolver el enunciado de la forma que creas conveniente, si deseas organizarlo usando una o mas funciones o escribir el código directamente */
 
-function identificarFigura(lados) {
+function tipoFigura(lados) {
+  // Manejo de errores
   if (lados < 0) {
     return "Figura invalida, no existe figura con lados negativos";
-  } else if (lados === 0) {
+  } else if (lados === 1) {
+    return "Figura invalida, una figura no puede tener un solo lado";
+  } else if (lados === 2) {
+    return "Figura invalida, una figura no puede tener dos lados";
+  }
+  // Casos validos
+  else if (lados === 0) {
     return "Círculo";
   } else if (lados === 3) {
     return "Triángulo";
@@ -44,12 +51,12 @@ function identificarFigura(lados) {
   }
 }
 
-console.log(identificarFigura(-1)); //Figura invalida, no existe figura con lados negativos
-console.log(identificarFigura(0)); //Círculo
-console.log(identificarFigura(1)); //undefined
-console.log(identificarFigura(2)); //undefined
-console.log(identificarFigura(3)); //Triángulo
-console.log(identificarFigura(4)); //Cuadrado
-console.log(identificarFigura(5)); //Pentágono
-console.log(identificarFigura(6)); //Hexágono
-console.log(identificarFigura(7)); //Polígono
+console.log(tipoFigura(-1)); //Figura invalida, no existe figura con lados negativos
+console.log(tipoFigura(0)); //Círculo
+console.log(tipoFigura(1)); //Figura invalida, una figura no puede tener un solo lado
+console.log(tipoFigura(2)); //Figura invalida, una figura no puede tener dos lados
+console.log(tipoFigura(3)); //Triángulo
+console.log(tipoFigura(4)); //Cuadrado
+console.log(tipoFigura(5)); //Pentágono
+console.log(tipoFigura(6)); //Hexágono
+console.log(tipoFigura(7)); //Polígono
