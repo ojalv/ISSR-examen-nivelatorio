@@ -51,12 +51,48 @@ function tipoFigura(lados) {
   }
 }
 
-console.log(tipoFigura(-1)); //Figura invalida, no existe figura con lados negativos
-console.log(tipoFigura(0)); //Círculo
-console.log(tipoFigura(1)); //Figura invalida, una figura no puede tener un solo lado
-console.log(tipoFigura(2)); //Figura invalida, una figura no puede tener dos lados
-console.log(tipoFigura(3)); //Triángulo
-console.log(tipoFigura(4)); //Cuadrado
-console.log(tipoFigura(5)); //Pentágono
-console.log(tipoFigura(6)); //Hexágono
-console.log(tipoFigura(7)); //Polígono
+function calcularPerimetroFigura(lados) {
+  if (lados < 0) {
+    return "Figura invalida, no se puede calcular el perimetro de una figura con lados negativos";
+  } else if (lados === 1) {
+    return "Figura invalida, no se puede calcular el perimetro de una figura de un lado";
+  } else if (lados === 2) {
+    return "Figura invalida, no se puede calcular el perimetro de una figura de dos lado";
+  }
+  // Casos validos
+  else if (lados === 0) {
+    let radio = parseFloat(prompt("ingrese el radio del circulo (cm): "));
+    return 2 * Math.PI * radio;
+  } else if (lados >= 3) {
+    let longitudLado = parseFloat(
+      prompt("Ingrese la longitud de un lado de su figura: ")
+    );
+    return longitudLado * lados;
+  }
+}
+
+let seleccion;
+
+while (seleccion != 0) {
+  seleccion = parseInt(
+    prompt(`
+    Bienvenido al programa Figuritas
+  
+   1. Determinar el tipo de figura segun su cantidad de lados
+   2. Calcular el perimetro de una figura (asumiendo que sus lados sean identicos)
+   0. Salir`)
+  );
+  if (seleccion == 1) {
+    let lados = parseInt(
+      prompt("Ingrese la cantidad de lados para determinar la figura")
+    );
+    alert(tipoFigura(lados));
+  }
+
+  if (seleccion == 2) {
+    let lados = parseInt(
+      prompt("Ingrese la cantidad de lados para calcular el perimetro")
+    );
+    alert(calcularPerimetroFigura(lados));
+  }
+}
